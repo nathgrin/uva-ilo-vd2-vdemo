@@ -7,19 +7,20 @@
 
 \usepackage{enumitem}
 \setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
-
 %\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
 
 
 \NewDocumentCommand{\lognl}{o}{%
   \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
 
-\newcommand\Block[2]{%
+\newcommand\Block[4]{%
 \setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
 \fbox{% delete
-\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][c]{\dimexpr0.3333333\textwidth-3pt\relax}
+\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
+\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
+\vspace{1.5cm}
 \centering
-#1\par #2
+#3\par #4
 \end{minipage}%
   }% delete
 }
@@ -29,15 +30,15 @@
     
 \thispagestyle{empty}% optional: suppress page numbering
 \noindent
-\Block{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3ajkhfawgf k aw ioifa ui whfpiagwalf hbwaol fbwaf upyfu yawbfpw aybf\item 2\item 4\item 128\end{enumerate}}\hfill%
-\Block{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
-\Block{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
+\Block{0}{keer}{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
+\Block{0}{keer}{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
+\Block{0}{keer}{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
 
     \vfill
     \noindent
-    \Block{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
-\Block{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
-\Block{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
+    \Block{0}{keer}{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
+\Block{0}{keer}{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
+\Block{0}{keer}{Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item 3\item 2\item 4\item 128\end{enumerate}}\hfill%
 
 
 \end{document}

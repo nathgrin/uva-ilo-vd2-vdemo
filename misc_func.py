@@ -1,3 +1,6 @@
+
+import numpy as np
+
 import matplotlib.pyplot as plt
 
 plt.rc('font',family='STIXGeneral',size=12) # STIX looks like latex
