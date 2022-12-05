@@ -1,0 +1,50 @@
+
+\documentclass{article}
+\usepackage[margin=2cm,centering,landscape]{geometry}
+
+\usepackage{graphicx}
+
+
+\usepackage{enumitem}
+\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
+%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
+
+
+\NewDocumentCommand{\lognl}{o}{%
+  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
+
+\newcommand\Block[5]{%
+\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
+\fbox{% delete
+\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
+\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
+\vspace{1.5cm}
+\centering
+#3\par #4\par
+\vfill
+\hfill#5\phantom{\hspace{1cm}}
+\vspace{\baselineskip}
+\end{minipage}%
+  }% delete
+}
+
+\begin{document}
+
+    
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{3}{vermeerder}{Bereken met hoeveel $y=\lognl[3](4 x)$ toeneemt als $x$ met 3 wordt vermenigvuldigd}{\begin{enumerate}\item plus $1.261860$\item keer $1.261860$\item keer $1.000000$\item plus $1.000000$\end{enumerate}}{0}\hfill%
+\Block{3}{vermeerder}{Bereken met hoeveel $y=\lognl[2](9 x)$ toeneemt als $x$ met 2 wordt vermenigvuldigd}{\begin{enumerate}\item keer $3.169925$\item plus $1.000000$\item plus $3.169925$\item keer $1.000000$\end{enumerate}}{1}\hfill%
+\Block{3}{vermeerder}{Bereken met hoeveel $y=\lognl[4](11 x)$ toeneemt als $x$ met 2 wordt vermenigvuldigd}{\begin{enumerate}\item keer $1.729716$\item plus $1.729716$\item plus $0.500000$\item keer $0.500000$\end{enumerate}}{2}\hfill%
+
+        \vfill
+        \noindent
+        \Block{3}{vermeerder}{Bereken met hoeveel $y=\lognl[4](1 x)$ toeneemt als $x$ met 2 wordt vermenigvuldigd}{\begin{enumerate}\item plus $0.500000$\item plus $0.000000$\item keer $0.500000$\item keer $0.000000$\end{enumerate}}{3}\hfill%
+\Block{3}{vermeerder}{Bereken met hoeveel $y=\lognl[2](1 x)$ toeneemt als $x$ met 2 wordt vermenigvuldigd}{\begin{enumerate}\item keer $0.000000$\item keer $1.000000$\item plus $1.000000$\item plus $0.000000$\end{enumerate}}{4}\hfill%
+\Block{3}{vermeerder}{Bereken met hoeveel $y=\lognl[3](10 x)$ toeneemt als $x$ met 4 wordt vermenigvuldigd}{\begin{enumerate}\item plus $1.261860$\item plus $2.095903$\item keer $2.095903$\item keer $1.261860$\end{enumerate}}{5}\hfill%
+
+
+\clearpage
+
+
+\end{document}

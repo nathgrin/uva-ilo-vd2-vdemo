@@ -21,6 +21,9 @@ plt.rc(('xtick','ytick'), labelsize=8)#, direction='in' )
 
 # plt.rc('image',cmap='gist_rainbow')
 
+def logb(b,x):
+    return np.log(x)/np.log(b)
+
 def merge_pdfs(filenames,outfilename,delete=False):
     ''' () -> float
     '''

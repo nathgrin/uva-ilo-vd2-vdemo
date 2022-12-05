@@ -1,0 +1,65 @@
+
+\documentclass{article}
+\usepackage[margin=2cm,centering,landscape]{geometry}
+
+\usepackage{graphicx}
+
+
+\usepackage{enumitem}
+\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
+%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
+
+
+\NewDocumentCommand{\lognl}{o}{%
+  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
+
+\newcommand\Block[5]{%
+\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
+\fbox{% delete
+\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
+\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
+\vspace{1.5cm}
+\centering
+#3\par #4\par
+\vfill
+\hfill#5\phantom{\hspace{1cm}}
+\vspace{\baselineskip}
+\end{minipage}%
+  }% delete
+}
+
+\begin{document}
+
+    
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{1}{macht}{Bereken $\lognl[2] (2^{2})$}{\begin{enumerate}\item $4$\item $4$\item $2$\item $\frac{2}{2}$\end{enumerate}}{0}\hfill%
+\Block{1}{macht}{Bereken $\lognl[6] (6^{7})$}{\begin{enumerate}\item $7$\item $42$\item $279936$\item $\frac{6}{7}$\end{enumerate}}{1}\hfill%
+\Block{1}{macht}{Bereken $\lognl[2] (2^{2})$}{\begin{enumerate}\item $4$\item $4$\item $\frac{2}{2}$\item $2$\end{enumerate}}{2}\hfill%
+
+        \vfill
+        \noindent
+        \Block{1}{macht}{Bereken $\lognl[6] (6^{6})$}{\begin{enumerate}\item $\frac{6}{6}$\item $46656$\item $36$\item $6$\end{enumerate}}{3}\hfill%
+\Block{1}{macht}{Bereken $\lognl[4] (4^{14})$}{\begin{enumerate}\item $14$\item $268435456$\item $\frac{4}{14}$\item $56$\end{enumerate}}{4}\hfill%
+\Block{1}{macht}{Bereken $\lognl[4] (4^{10})$}{\begin{enumerate}\item $10$\item $1048576$\item $40$\item $\frac{4}{10}$\end{enumerate}}{5}\hfill%
+
+
+\clearpage
+
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{1}{macht}{Bereken $\lognl[6] (6^{3})$}{\begin{enumerate}\item $18$\item $216$\item $\frac{6}{3}$\item $3$\end{enumerate}}{6}\hfill%
+\Block{1}{macht}{Bereken $\lognl[4] (4^{1})$}{\begin{enumerate}\item $\frac{4}{1}$\item $1$\item $4$\item $4$\end{enumerate}}{7}\hfill%
+\Block{1}{macht}{Bereken $\lognl[3] (3^{9})$}{\begin{enumerate}\item $9$\item $19683$\item $\frac{3}{9}$\item $27$\end{enumerate}}{8}\hfill%
+
+        \vfill
+        \noindent
+        \Block{1}{macht}{Bereken $\lognl[3] (3^{8})$}{\begin{enumerate}\item $6561$\item $24$\item $\frac{3}{8}$\item $8$\end{enumerate}}{9}\hfill%
+\Block{1}{macht}{Bereken $\lognl[6] (6^{7})$}{\begin{enumerate}\item $42$\item $7$\item $\frac{6}{7}$\item $279936$\end{enumerate}}{10}\hfill%
+\Block{1}{macht}{Bereken $\lognl[2] (2^{12})$}{\begin{enumerate}\item $4096$\item $24$\item $12$\item $\frac{2}{12}$\end{enumerate}}{11}\hfill%
+
+
+\clearpage
+
+
+\end{document}

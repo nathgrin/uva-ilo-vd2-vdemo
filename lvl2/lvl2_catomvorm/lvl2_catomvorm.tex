@@ -1,0 +1,50 @@
+
+\documentclass{article}
+\usepackage[margin=2cm,centering,landscape]{geometry}
+
+\usepackage{graphicx}
+
+
+\usepackage{enumitem}
+\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
+%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
+
+
+\NewDocumentCommand{\lognl}{o}{%
+  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
+
+\newcommand\Block[5]{%
+\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
+\fbox{% delete
+\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
+\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
+\vspace{1.5cm}
+\centering
+#3\par #4\par
+\vfill
+\hfill#5\phantom{\hspace{1cm}}
+\vspace{\baselineskip}
+\end{minipage}%
+  }% delete
+}
+
+\begin{document}
+
+    
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{3}{omvorm}{Herleid $y=0+\lognl[2] (11\cdot x+6)$}{\begin{enumerate}\item $x=\frac{6}{11}2^{y-0}$\item $x=\frac{2^{y-0}-6}{11}$\item $x=\lognl[2](11 y - 0)-6$\item $x=\frac{2^{11 y-6}}{0}$\end{enumerate}}{0}\hfill%
+\Block{3}{omvorm}{Herleid $y=0+\lognl[4] (4\cdot x+1)$}{\begin{enumerate}\item $x=\frac{1}{4}4^{y-0}$\item $x=\lognl[4](4 y - 0)-1$\item $x=\frac{4^{4 y-1}}{0}$\item $x=\frac{4^{y-0}-1}{4}$\end{enumerate}}{1}\hfill%
+\Block{3}{omvorm}{Herleid $y=0+\lognl[3] (10\cdot x+8)$}{\begin{enumerate}\item $x=\frac{3^{10 y-8}}{0}$\item $x=\frac{8}{10}3^{y-0}$\item $x=\lognl[3](10 y - 0)-8$\item $x=\frac{3^{y-0}-8}{10}$\end{enumerate}}{2}\hfill%
+
+        \vfill
+        \noindent
+        \Block{3}{omvorm}{Herleid $y=13+\lognl[4] (4\cdot x+0)$}{\begin{enumerate}\item $x=\lognl[4](4 y - 13)-0$\item $x=\frac{0}{4}4^{y-13}$\item $x=\frac{4^{y-13}-0}{4}$\item $x=\frac{4^{4 y-0}}{13}$\end{enumerate}}{3}\hfill%
+\Block{3}{omvorm}{Herleid $y=7+\lognl[2] (7\cdot x+4)$}{\begin{enumerate}\item $x=\frac{2^{7 y-4}}{7}$\item $x=\lognl[2](7 y - 7)-4$\item $x=\frac{2^{y-7}-4}{7}$\item $x=\frac{4}{7}2^{y-7}$\end{enumerate}}{4}\hfill%
+\Block{3}{omvorm}{Herleid $y=0+\lognl[4] (0\cdot x+2)$}{\begin{enumerate}\item $x=\frac{2}{0}4^{y-0}$\item $x=\frac{4^{0 y-2}}{0}$\item $x=\frac{4^{y-0}-2}{0}$\item $x=\lognl[4](0 y - 0)-2$\end{enumerate}}{5}\hfill%
+
+
+\clearpage
+
+
+\end{document}

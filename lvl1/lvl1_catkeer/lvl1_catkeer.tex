@@ -1,0 +1,65 @@
+
+\documentclass{article}
+\usepackage[margin=2cm,centering,landscape]{geometry}
+
+\usepackage{graphicx}
+
+
+\usepackage{enumitem}
+\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
+%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
+
+
+\NewDocumentCommand{\lognl}{o}{%
+  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
+
+\newcommand\Block[5]{%
+\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
+\fbox{% delete
+\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
+\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
+\vspace{1.5cm}
+\centering
+#3\par #4\par
+\vfill
+\hfill#5\phantom{\hspace{1cm}}
+\vspace{\baselineskip}
+\end{minipage}%
+  }% delete
+}
+
+\begin{document}
+
+    
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{2}{keer}{Herleid $\lognl[3] (27\cdot x)$}{\begin{enumerate}\item $3.000000\lognl[3](x)$\item 128\item $3.000000+\lognl[3](x)$\item $81.000000+\lognl[3](x)$\end{enumerate}}{0}\hfill%
+\Block{2}{keer}{Herleid $\lognl[2] (2\cdot x)$}{\begin{enumerate}\item $1.000000\lognl[2](x)$\item 128\item $1.000000+\lognl[2](x)$\item $4.000000+\lognl[2](x)$\end{enumerate}}{1}\hfill%
+\Block{2}{keer}{Herleid $\lognl[4] (64\cdot x)$}{\begin{enumerate}\item $256.000000+\lognl[4](x)$\item $3.000000+\lognl[4](x)$\item $3.000000\lognl[4](x)$\item 128\end{enumerate}}{2}\hfill%
+
+        \vfill
+        \noindent
+        \Block{2}{keer}{Herleid $\lognl[4] (12\cdot x)$}{\begin{enumerate}\item 128\item $1.792481+\lognl[4](x)$\item $1.792481\lognl[4](x)$\item $48.000000+\lognl[4](x)$\end{enumerate}}{3}\hfill%
+\Block{2}{keer}{Herleid $\lognl[3] (9\cdot x)$}{\begin{enumerate}\item $2.000000+\lognl[3](x)$\item $27.000000+\lognl[3](x)$\item $2.000000\lognl[3](x)$\item 128\end{enumerate}}{4}\hfill%
+\Block{2}{keer}{Herleid $\lognl[3] (9\cdot x)$}{\begin{enumerate}\item $2.000000+\lognl[3](x)$\item $27.000000+\lognl[3](x)$\item $2.000000\lognl[3](x)$\item 128\end{enumerate}}{5}\hfill%
+
+
+\clearpage
+
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{2}{keer}{Herleid $\lognl[3] (5 x) + \lognl[3](2) $ tot \'e\'en logaritme}{\begin{enumerate}\item $\lognl[3](10 x)$\item 128\item $\lognl[3](7 x)$\item $\lognl[3](5 x + 2)$\end{enumerate}}{6}\hfill%
+\Block{2}{keer}{Herleid $\lognl[3] (4 x) + \lognl[3](3) $ tot \'e\'en logaritme}{\begin{enumerate}\item 128\item $\lognl[3](7 x)$\item $\lognl[3](12 x)$\item $\lognl[3](4 x + 3)$\end{enumerate}}{7}\hfill%
+\Block{2}{keer}{Herleid $\lognl[2] (3 x) + \lognl[2](7) $ tot \'e\'en logaritme}{\begin{enumerate}\item $\lognl[2](21 x)$\item $\lognl[2](10 x)$\item $\lognl[2](3 x + 7)$\item 128\end{enumerate}}{8}\hfill%
+
+        \vfill
+        \noindent
+        \Block{2}{keer}{Herleid $\lognl[2] (3 x) + \lognl[2](6) $ tot \'e\'en logaritme}{\begin{enumerate}\item $\lognl[2](18 x)$\item $\lognl[2](9 x)$\item 128\item $\lognl[2](3 x + 6)$\end{enumerate}}{9}\hfill%
+\Block{2}{keer}{Herleid $\lognl[3] (7 x) + \lognl[3](2) $ tot \'e\'en logaritme}{\begin{enumerate}\item $\lognl[3](7 x + 2)$\item $\lognl[3](14 x)$\item $\lognl[3](9 x)$\item 128\end{enumerate}}{10}\hfill%
+\Block{2}{keer}{Herleid $\lognl[3] (6 x) + \lognl[3](3) $ tot \'e\'en logaritme}{\begin{enumerate}\item $\lognl[3](6 x + 3)$\item $\lognl[3](9 x)$\item 128\item $\lognl[3](18 x)$\end{enumerate}}{11}\hfill%
+
+
+\clearpage
+
+
+\end{document}

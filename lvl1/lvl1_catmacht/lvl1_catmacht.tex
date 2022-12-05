@@ -1,0 +1,50 @@
+
+\documentclass{article}
+\usepackage[margin=2cm,centering,landscape]{geometry}
+
+\usepackage{graphicx}
+
+
+\usepackage{enumitem}
+\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
+%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
+
+
+\NewDocumentCommand{\lognl}{o}{%
+  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
+
+\newcommand\Block[5]{%
+\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
+\fbox{% delete
+\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
+\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
+\vspace{1.5cm}
+\centering
+#3\par #4\par
+\vfill
+\hfill#5\phantom{\hspace{1cm}}
+\vspace{\baselineskip}
+\end{minipage}%
+  }% delete
+}
+
+\begin{document}
+
+    
+\thispagestyle{empty}% optional: suppress page numbering
+    \noindent
+\Block{1}{macht}{Bereken $\lognl[4] (\frac{1}{4^{4}}\cdot4^{3})$}{\begin{enumerate}\item $-12.000000$\item $0.250000$\item $-4.000000$\item $-1.000000$\end{enumerate}}{0}\hfill%
+\Block{1}{macht}{Bereken $\lognl[3] (\frac{1}{3^{4}}\cdot\sqrt[3]{3})$}{\begin{enumerate}\item $-3.666667$\item $0.017806$\item $-11.000000$\item $-1.333333$\end{enumerate}}{1}\hfill%
+\Block{1}{macht}{Bereken $\lognl[5] (\frac{1}{5^{1}}\cdot\frac{1}{5^{1}})$}{\begin{enumerate}\item $-2.000000$\item $0.040000$\item $1.000000$\item $-10.000000$\end{enumerate}}{2}\hfill%
+
+        \vfill
+        \noindent
+        \Block{1}{macht}{Bereken $\lognl[4] (\sqrt[1]{4}\cdot\frac{1}{4^{2}})$}{\begin{enumerate}\item $-4.000000$\item $-2.000000$\item $-1.000000$\item $0.250000$\end{enumerate}}{3}\hfill%
+\Block{1}{macht}{Bereken $\lognl[5] (\frac{1}{5^{2}}\cdot\sqrt[3]{5})$}{\begin{enumerate}\item $0.068399$\item $-8.333333$\item $-0.666667$\item $-1.666667$\end{enumerate}}{4}\hfill%
+\Block{1}{macht}{Bereken $\lognl[5] (\sqrt[1]{5}\cdot\sqrt[4]{5})$}{\begin{enumerate}\item $7.476744$\item $0.250000$\item $6.250000$\item $1.250000$\end{enumerate}}{5}\hfill%
+
+
+\clearpage
+
+
+\end{document}
