@@ -57,14 +57,14 @@ def make_figures(loc,obj):
 
     ## Formula
     fig,ax = _inifig()
-    arratxt =""
+    arraytxt =""
     for antw in obj['antw']:
         arraytxt += r"\mathbf{%s}& %s \\"%('a)',antw)
         
-    thetext = """%s
+    thetext = r"""%s
     $\begin{array}
     %s
-    \end{array}$""".format(obj['vraag'],arraytxt)
+    \end{array}$"""%(obj['vraag'],arraytxt)
     
     ax.text(0.5, 0.5, thetext, fontsize=24, horizontalalignment='left',verticalalignment='center', transform=ax.transAxes)
     
