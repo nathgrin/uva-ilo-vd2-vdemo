@@ -440,6 +440,47 @@ def gen_lvl2_catvermeerder():
     
     return loc+fname
 
+def gen_lvl3_catbereken():
+    
+    loc = "lvl3/lvl3_catbereken/"
+    fname = "lvl3_catbereken"
+    
+    
+    def _template():
+        lvl = 3
+        cat = "vermeerder"
+        vraag = r"""Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $"""
+        antw = ["3","2","4","128"]
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        return obj
+
+    in_obj_list = []
+    for i in range(6):
+        obj = _template()
+        b = np.random.randint(2,5)
+        coinflip = np.random.randint(2)
+        
+        a = 1 if coinflip else np.random.randint(1,15)
+        c = 2 if coinflip else np.random.randint(2,5)
+        
+        
+        obj['vraag'] = r"""Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $"""
+        
+        obj['antw'][0] = r"?"
+        obj['antw'][1] = r"?"
+        obj['antw'][2] = r"?"
+        obj['antw'][3] = r"?"
+        
+        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
+    
+        in_obj_list.append(obj)
+        
+        
+    
+    obj_list_to_document(loc,fname,in_obj_list)
+    
+    return loc+fname
+
 def obj_list_to_document(loc,fname,in_obj_list):
 
     pages = [ ]
@@ -476,6 +517,9 @@ def main():
     fname = gen_lvl2_catomvorm()
     fnames.append(fname)
     fname = gen_lvl2_catvermeerder()
+    fnames.append(fname)
+    
+    fname = gen_lvl3_catbereken()
     fnames.append(fname)
     
     # Watch out: all latex files have to be run by hand first before combine

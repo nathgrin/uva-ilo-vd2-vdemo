@@ -6,6 +6,7 @@ vakdidaktiek 2 vdemo kaartjes maken
 ## todo:
 
  - lvl0: cat omvormen. y= 10logx => x = ...^y
+ - lvl3: 
 
  - delen? keer, min?
 
