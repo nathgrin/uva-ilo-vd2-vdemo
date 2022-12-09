@@ -115,15 +115,48 @@ def make_page(obj,index,order):
     
     return page
 
-def gen_lvl0_catmacht():
-    
-    loc = "lvl0/lvl0_catmacht/"
-    fname = "lvl0_catmacht"
-    
+def gen_lvl0_catomvorm(loc,fname,lvl,cat):
     
     def _template():
-        lvl = 0
-        cat = "macht"
+        lvl = lvl
+        cat = cat
+        vraag = r"""Bereken $\lognl[2] (2^3)$"""
+        antw = ["3","2","4","128"]
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        return obj
+
+    in_obj_list = []
+    for i in range(6):
+        obj = _template()
+        grondtal = np.random.randint(2,7)
+        coinflip = np.random.randint(2)
+        
+        # macht = 10 if coinflip else np.random.randint(2,4)
+        macht = np.random.randint(2,5)
+        # while x == grondtarget:
+        #     x = np.random.randint(2,4)
+        # print(n,coinflip,grondtarget,x)
+        obj['vraag'] = r"""Bereken $x$ als $%i^{x}=%i$"""%(grondtal,grondtal**macht)
+        
+        obj['antw'][0] = r"$x=\lognl[%i]$"%(macht)
+        obj['antw'][1] = r"$%i$"%(grondtal*macht)
+        obj['antw'][2] = r"$%i$"%(grondtal**macht)
+        obj['antw'][3] = r"$\frac{%i}{%i}$"%(grondtal,macht)
+        
+        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
+    
+        in_obj_list.append(obj)
+    
+    
+    obj_list_to_document(loc,fname,in_obj_list)
+    
+    return loc+fname
+
+def gen_lvl0_catmacht(loc,fname,lvl,cat):
+    
+    def _template():
+        lvl = lvl
+        cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -156,7 +189,7 @@ def gen_lvl0_catmacht():
     
     return loc+fname
 
-def gen_lvl1_catmacht():
+def gen_lvl1_catmacht(loc,fname,lvl,cat):
 
     def _typeset(grondtal,which,power):
         powers = ["sqrt","neg","nml"]
@@ -172,13 +205,11 @@ def gen_lvl1_catmacht():
             
         return thetxt,x
     
-    loc = "lvl1/lvl1_catmacht/"
-    fname = "lvl1_catmacht"
     
     
     def _template():
-        lvl = 0
-        cat = "macht"
+        lvl = lvl
+        cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -213,15 +244,11 @@ def gen_lvl1_catmacht():
     
     return loc+fname
 
-def gen_lvl0_catgrondtal():
-    
-    loc = "lvl0/lvl0_catgrondtal/"
-    fname = "lvl0_catgrondtal"
-    
+def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
     
     def _template():
-        lvl = 0
-        cat = "grondtal"
+        lvl = lvl
+        cat = cat
         vraag = r"""Schrijf $\lognl[2] (3)$ als logaritme met grondtal 10"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -254,15 +281,11 @@ def gen_lvl0_catgrondtal():
     
     return loc+fname
 
-def gen_lvl0_catkeer():
-    
-    loc = "lvl0/lvl0_catkeer/"
-    fname = "lvl0_catkeer"
-    
+def gen_lvl0_catkeer(loc,fname,lvl,cat):
     
     def _template():
-        lvl = 0
-        cat = "keer"
+        lvl = lvl
+        cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -296,15 +319,12 @@ def gen_lvl0_catkeer():
     return loc+fname
 
 
-def gen_lvl1_catkeer():
-    
-    loc = "lvl1/lvl1_catkeer/"
-    fname = "lvl1_catkeer"
+def gen_lvl1_catkeer(loc,fname,lvl,cat):
     
     
     def _template():
-        lvl = 1
-        cat = "keer"
+        lvl = lvl
+        cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -356,15 +376,11 @@ def gen_lvl1_catkeer():
     
     return loc+fname
 
-def gen_lvl2_catomvorm():
-    
-    loc = "lvl2/lvl2_catomvorm/"
-    fname = "lvl2_catomvorm"
-    
+def gen_lvl2_catomvorm(loc,fname,lvl,cat):
     
     def _template():
-        lvl = 2
-        cat = "omvorm"
+        lvl = lvl
+        cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -399,15 +415,11 @@ def gen_lvl2_catomvorm():
     
     return loc+fname
 
-def gen_lvl2_catvermeerder():
-    
-    loc = "lvl2/lvl2_catvermeerder/"
-    fname = "lvl2_catvermeerder"
-    
+def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
     
     def _template():
-        lvl = 2
-        cat = "vermeerder"
+        lvl = lvl
+        cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -440,15 +452,11 @@ def gen_lvl2_catvermeerder():
     
     return loc+fname
 
-def gen_lvl3_catbereken():
-    
-    loc = "lvl3/lvl3_catbereken/"
-    fname = "lvl3_catbereken"
-    
+def gen_lvl3_catbereken(loc,fname,lvl,cat):
     
     def _template():
-        lvl = 3
-        cat = "vermeerder"
+        lvl = lvl
+        cat = cat
         vraag = r"""Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -496,30 +504,68 @@ def obj_list_to_document(loc,fname,in_obj_list):
 
 def main():
     print('vamonos')
+    def _locfname(lvl,cat):
+        fname = "lvl%i_cat%s"%(lvl,cat)
+        loc = "lvl%i/%s/"%(lvl,fname)
+        return loc,fname
     
     fnames = []
     
     # Lvl 0
-    fname = gen_lvl0_catkeer()
+    lvl = 0
+    
+    cat = "keer"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl0_catkeer(loc,fname,lvl,cat)
     fnames.append(fname)
-    fname = gen_lvl0_catgrondtal()
+    
+    cat = "grondtal"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl0_catgrondtal(loc,fname,lvl,cat)
     fnames.append(fname)
-    fname = gen_lvl0_catmacht()
+    
+    cat = "macht"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl0_catmacht(loc,fname,lvl,cat)
+    fnames.append(fname)
+    
+    cat = "omvormen"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl0_catomvorm(loc,fname,lvl,cat)
     fnames.append(fname)
     
     # Lvl 1
-    fname = gen_lvl1_catkeer()
+    lvl = 1
+    
+    cat = "keer"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl1_catkeer(loc,fname,lvl,cat)
     fnames.append(fname)
-    fname = gen_lvl1_catmacht()
+    
+    cat = "keer"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl1_catmacht(loc,fname,lvl,cat)
     fnames.append(fname)
     
     # Lvl 2
-    fname = gen_lvl2_catomvorm()
-    fnames.append(fname)
-    fname = gen_lvl2_catvermeerder()
+    lvl = 2
+    
+    cat = "omvorm"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl2_catomvorm(loc,fname,lvl,cat)
     fnames.append(fname)
     
-    fname = gen_lvl3_catbereken()
+    cat = "vermeerder"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl2_catvermeerder(loc,fname,lvl,cat)
+    fnames.append(fname)
+    
+    # Lvl 3
+    lvl = 3
+    
+    cat = "bereken"
+    loc,fname = _locfname(lvl,cat)
+    fname = gen_lvl3_catbereken(loc,fname,lvl,cat)
     fnames.append(fname)
     
     # Watch out: all latex files have to be run by hand first before combine
