@@ -2,13 +2,14 @@ from misc_func import *
 
 
 
-def preamble():
+def preamble(landscape_or_portrait='landscape'):
+    
     return r"""
 \documentclass{article}
-\usepackage[margin=0.5cm,centering,landscape]{geometry}
+\usepackage[margin=0.5cm,centering,"""+landscape_or_portrait+r"""]{geometry}
 
 \usepackage{graphicx}
-
+\usepackage[table]{xcolor}
 
 \usepackage{enumitem}
 \setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
@@ -33,6 +34,12 @@ def preamble():
   }% delete
 }
 
+%\setlength{\tabcolsep}{20pt}
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{empty} % no page numbering
+\setlength{\parindent}{0cm} % no indentation
+
 \begin{document}
 
     """
@@ -53,6 +60,47 @@ def body(): # not used atm
 \Block{}{}{}{}"""
 
 
+def make_document_answers(loc,fname,lvl,cat,answers):
+    
+    
+    
+    
+    thefile = manipulate_files(loc+fname+"_antwoord.tex")
+    thefile.clearfile()
+    
+    
+    
+    writeline = r"""\begin{tabular}{ rr| c|c|c|c}\hline\hline
+     & i & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{D}\\\hline
+"""
+    thefile.write_appline(writeline)
+    
+    for i,antw in enumerate(answers):
+        if i == 1:
+            entry = "Level %s & "%(lvl+1)
+        elif i == 2:
+            entry = "%s &"%(cat)
+        else:
+            entry = "&"
+        
+        entry += str(i)
+        
+        for one_antw in antw:
+            
+            entry += "&"+one_antw
+            if one_antw == "Correct":
+                entry += r"""\cellcolor[gray]{0.6}"""
+        entry += r"\\"
+
+        thefile.write_appline(entry)
+        
+    
+    writeline = r"""\hline\end{tabular}\par\ \newline
+"""
+    thefile.write_appline(writeline)
+    
+    
+
 
 def make_document(loc,fname,pages):
     
@@ -63,22 +111,19 @@ def make_document(loc,fname,pages):
     thefile.clearfile()
     
     
-    # Head
+    # Head # no header, combine all later with headerfooter
     # thefile.write_appline( preamble() )
     
     groups = [pages[i:i+6] for i in range(0, len(pages), 6)]
     
     for i,group in enumerate(groups):
         # Contents
-        content = r"""\thispagestyle{empty}% optional: suppress page numbering
-    \noindent
-"""
+        content = r""""""
         for p in group[:3]:
             content += r"%s"%(p)+r"""\hfill%
 """
         content += r"""
         \vfill
-        \noindent
         """
         for p in group[3:]:
             content += r"%s"%(p)+r"""\hfill%
@@ -89,7 +134,7 @@ def make_document(loc,fname,pages):
         if i != len(groups):
             thefile.write_appline("\n\clearpage\n")
     
-    # End file
+    # End file # no footer, combine all later with headerfooter
     # thefile.write_appline( foot() )
 
 
@@ -121,8 +166,9 @@ def gen_lvl0_catomvorm(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -138,12 +184,11 @@ def gen_lvl0_catomvorm(loc,fname,lvl,cat):
         # print(n,coinflip,grondtarget,x)
         obj['vraag'] = r"""Bereken $x$ als $%i^{x}=%i$"""%(grondtal,grondtal**macht)
         
-        obj['antw'][0] = r"$x=\lognl[%i]$"%(macht)
-        obj['antw'][1] = r"$%i$"%(grondtal*macht)
-        obj['antw'][2] = r"$%i$"%(grondtal**macht)
-        obj['antw'][3] = r"$\frac{%i}{%i}$"%(grondtal,macht)
+        obj = obj_add_answer( obj,r"$x=\lognl[%i]$"%(macht) , "Correct")
+        obj = obj_add_answer( obj,r"$%i$"%(grondtal*macht) , "definitie")
+        obj = obj_add_answer( obj,r"$%i$"%(grondtal**macht) , "definitie")
+        obj = obj_add_answer( obj,r"$\frac{%i}{%i}$"%(grondtal,macht) , "definitie")
         
-        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
     
         in_obj_list.append(obj)
     
@@ -158,9 +203,11 @@ def gen_lvl0_catmacht(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
+
 
     in_obj_list = []
     for i in range(12):
@@ -175,12 +222,11 @@ def gen_lvl0_catmacht(loc,fname,lvl,cat):
         # print(n,coinflip,grondtarget,x)
         obj['vraag'] = r"""Bereken $\lognl[%i] (%i^{%i})$"""%(grondtal,grondtal,macht)
         
-        obj['antw'][0] = r"$%i$"%(macht)
-        obj['antw'][1] = r"$%i$"%(grondtal*macht)
-        obj['antw'][2] = r"$%i$"%(grondtal**macht)
-        obj['antw'][3] = r"$\frac{%i}{%i}$"%(grondtal,macht)
+        obj = obj_add_answer( obj,r"$%i$"%(macht) , "Correct")
+        obj = obj_add_answer( obj,r"$%i$"%(grondtal*macht) , "definitie")
+        obj = obj_add_answer( obj,r"$%i$"%(grondtal**macht) , "definitie")
+        obj = obj_add_answer( obj,r"$\frac{%i}{%i}$"%(grondtal,macht) , "definitie")
         
-        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
     
         in_obj_list.append(obj)
     
@@ -211,8 +257,9 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -230,10 +277,10 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Bereken $\lognl[%i] (%s\cdot%s)$"""%(grondtal,xstr,ystr)
         
-        obj['antw'][0] = r"$%f$"%(x+y)
-        obj['antw'][1] = r"$%f$"%(x*y)
-        obj['antw'][2] = r"$%f$"%(grondtal*(x+y))
-        obj['antw'][3] = r"$%f$"%(grondtal**(x+y))
+        obj = obj_add_answer( obj,r"$%f$"%(x+y) , "Correct" )
+        obj = obj_add_answer( obj,r"$%f$"%(x*y), "logxlog" )
+        obj = obj_add_answer( obj,r"$%f$"%(grondtal*(x+y)), "definitie" )
+        obj = obj_add_answer( obj,r"$%f$"%(grondtal**(x+y)), "definitie" )
         
         obj['antw_uitleg'] = ["Correct","logxlog","definitie","definitie"]
     
@@ -250,8 +297,9 @@ def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Schrijf $\lognl[2] (3)$ als logaritme met grondtal 10"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -267,12 +315,11 @@ def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
         print(n,coinflip,grondtarget,x)
         obj['vraag'] = r"""Schrijf $\lognl[%i] (%i)$ als logaritme met grondtal %i"""%(n,x,grondtarget)
         
-        obj['antw'][0] = r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,grondtarget,n)
-        obj['antw'][1] = r"$\lognl[%i](%i)$"%(grondtarget,x)
-        obj['antw'][2] = r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,x,grondtarget)
-        obj['antw'][3] = r"$\frac{1}{%i}\lognl[%i](%i)$"%(n,grondtarget,x)
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,grondtarget,n)  , "Correct" )
+        obj = obj_add_answer( obj,r"$\lognl[%i](%i)$"%(grondtarget,x) , "swappen" )
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,x,grondtarget) , "swappen" )
+        obj = obj_add_answer( obj,r"$\frac{1}{%i}\lognl[%i](%i)$"%(n,grondtarget,x) , "swappen" )
         
-        obj['antw_uitleg'] = ["Correct","definitie_swappen","definitie_swappen","definitie_swappen"]
     
         in_obj_list.append(obj)
     
@@ -287,8 +334,9 @@ def gen_lvl0_catkeer(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -304,12 +352,11 @@ def gen_lvl0_catkeer(loc,fname,lvl,cat):
         print(n,coinflip,first,second)
         obj['vraag'] = r"""Bereken $\lognl[%i] (%i\cdot %i) $"""%(n,n**first,n**second)
         
-        obj['antw'][0] = str(first+second)
-        obj['antw'][1] = str(first*second)
-        obj['antw'][2] = str((n**first)*(n**second)//n)
-        obj['antw'][3] = str(n**np.random.randint(5,7))
+        obj = obj_add_answer( obj,str(first+second) , "Correct" )
+        obj = obj_add_answer( obj,str(first*second) , "logxlog" )
+        obj = obj_add_answer( obj,str((n**first)*(n**second)//n) , "definitie" )
+        obj = obj_add_answer( obj,str(n**np.random.randint(5,7)) , "definitie" )
         
-        obj['antw_uitleg'] = ["Correct","logxlog","definitie","definitie"]
     
         in_obj_list.append(obj)
     
@@ -326,8 +373,9 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -342,11 +390,10 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Herleid $\lognl[%i] (%i\cdot x)$"""%(b,second)
         
-        obj['antw'][0] = r"$%f+\lognl[%i](x)$"%(logb(b,second),b)
-        obj['antw'][1] = r"$%f+\lognl[%i](x)$"%(b*second,b)
-        obj['antw'][2] = r"$%f\lognl[%i](x)$"%(logb(b,second),b)
+        obj = obj_add_answer( obj,r"$%f+\lognl[%i](x)$"%(logb(b,second),b) , "Correct" )
+        obj = obj_add_answer( obj,r"$%f+\lognl[%i](x)$"%(b*second,b) , "definitie" )
+        obj = obj_add_answer( obj,r"$%f\lognl[%i](x)$"%(logb(b,second),b) , "logxlog" )
         
-        obj['antw_uitleg'] = ["Correct","definitie","logxlog"]
     
         in_obj_list.append(obj)
         
@@ -362,12 +409,11 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Herleid $\lognl[%i] (%i x) + \lognl[%i](%i) $ tot \'e\'en logaritme"""%(b,first,b,second)
         
-        obj['antw'][0] = r"$\lognl[%i](%i x)$"%(b,first*second)
-        obj['antw'][1] = r"$\lognl[%i](%i x)$"%(b,first+second)
-        obj['antw'][2] = r"$\lognl[%i](%i x)$"%(b,first^second)
-        obj['antw'][2] = r"$\lognl[%i](%i x + %i)$"%(b,first,second)
+        obj = obj_add_answer( obj,r"$\lognl[%i](%i x)$"%(b,first*second) , "Correct" )
+        obj = obj_add_answer( obj,r"$\lognl[%i](%i x)$"%(b,first+second) , "definitie" )
+        obj = obj_add_answer( obj,r"$\lognl[%i](%i x)$"%(b,first^second) , "definitie" )
+        obj = obj_add_answer( obj,r"$\lognl[%i](%i x + %i)$"%(b,first,second) , "logxlog" )
         
-        obj['antw_uitleg'] = ["Correct","definitie","definitie","log+log"]
     
         in_obj_list.append(obj)
     
@@ -382,8 +428,9 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -400,12 +447,11 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Herleid $y=%i+\lognl[%i] (%i\cdot x+%i)$"""%(a,b,c,d)
         
-        obj['antw'][0] = r"$x=\frac{%i^{y-%i}-%i}{%i}$"%(b,a,d,c)
-        obj['antw'][1] = r"$x=\frac{%i}{%i}%i^{y-%i}$"%(d,c,b,a)
-        obj['antw'][2] = r"$x=\frac{%i^{%i y-%i}}{%i}$"%(b,c,d,a)
-        obj['antw'][3] = r"$x=\lognl[%i](%i y - %i)-%i$"%(b,c,a,d)
+        obj = obj_add_answer( obj,r"$x=\frac{%i^{y-%i}-%i}{%i}$"%(b,a,d,c) , "Correct" )
+        obj = obj_add_answer( obj,r"$x=\frac{%i}{%i}%i^{y-%i}$"%(d,c,b,a) , "definitie" )
+        obj = obj_add_answer( obj,r"$x=\frac{%i^{%i y-%i}}{%i}$"%(b,c,d,a) , "definitie" )
+        obj = obj_add_answer( obj,r"$x=\lognl[%i](%i y - %i)-%i$"%(b,c,a,d) , "definitie" )
         
-        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
     
         in_obj_list.append(obj)
         
@@ -415,14 +461,16 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
     
     return loc+fname
 
+    
 def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
     
     def _template():
         # lvl = lvl
         # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -437,17 +485,14 @@ def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Bereken met hoeveel $y=\lognl[%i](%i x)$ toeneemt als $x$ met %i wordt vermenigvuldigd"""%(b,a,c)
         
-        obj['antw'][0] = r"plus $%f$"%(logb(b,c))
-        obj['antw'][1] = r"keer $%f$"%(logb(b,c))
-        obj['antw'][2] = r"plus $%f$"%(logb(b,a))
-        obj['antw'][3] = r"keer $%f$"%(logb(b,a))
+        obj = obj_add_answer( obj,r"plus $%f$"%(logb(b,c)) , "Correct" )
+        obj = obj_add_answer( obj,r"keer $%f$"%(logb(b,c)), "definitie" )
+        obj = obj_add_answer( obj,r"plus $%f$"%(logb(b,a)), "definitie" )
+        obj = obj_add_answer( obj,r"keer $%f$"%(logb(b,a)), "definitie" )
         
-        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
     
         in_obj_list.append(obj)
         
-        
-    
     obj_list_to_document(loc,fname,in_obj_list)
     
     return loc+fname
@@ -458,8 +503,9 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
         # lvl = lvl
         # cat = cat
         vraag = r"""Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $"""
-        antw = ["3","2","4","128"]
-        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
+        antw = []
+        antw_uitleg = []
+        obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
     in_obj_list = []
@@ -474,13 +520,12 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $"""
         
-        obj['antw'][0] = r"?"
-        obj['antw'][1] = r"?"
-        obj['antw'][2] = r"?"
-        obj['antw'][3] = r"?"
+        obj = obj_add_answer( obj,r"?" , "?" )
+        obj = obj_add_answer( obj,r"?" , "?" )
+        obj = obj_add_answer( obj,r"?" , "?" )
+        obj = obj_add_answer( obj,r"?" , "?" )
         
-        obj['antw_uitleg'] = ["Correct","definitie","definitie","definitie"]
-    
+        
         in_obj_list.append(obj)
         
         
@@ -490,109 +535,179 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
     return loc+fname
 
 def obj_list_to_document(loc,fname,in_obj_list):
-
+    # print(in_obj_list)
+    lvl = in_obj_list[0]['lvl']
+    cat = in_obj_list[0]['cat']
+    
     pages = [ ]
+    answers = [ ]
     for i,obj in enumerate(in_obj_list):
         order = np.random.permutation(len(obj['antw'])) # random order
         page = make_page(obj,str(i),order) 
         pages.append(page)
+        print(obj)
+        print(order)
+        print(obj['antw'])
+        print(obj['antw_uitleg'])
+        answers.append([obj['antw_uitleg'][ind] for ind in order]) # Comply to random order
         
         # TODO: log right answer and uitleg
     
     make_document(loc,fname,pages)
     
+    make_document_answers(loc,fname,lvl,cat,answers)
+    
 def combine_to_single_tex(loc,fname,fnames,loc_relative="../"):
     
     
-    
-    thefile = manipulate_files(loc+fname) # is .tex
-    thefile.clearfile()
-    
-    
-    # Head
-    thefile.write_appline( preamble() )
-    
-    thefile.write_appline("\n\n\n")
-    
-    for fn in fnames:
+    def _questions():
+        thefile = manipulate_files(loc+fname+".tex") 
+        thefile.clearfile()
         
-        writeline = r"\input{%s}"%(loc_relative+fn+".tex")
-        thefile.write_appline(writeline)
+        
+        # Head
+        thefile.write_appline( preamble() )
+        
+        thefile.write_appline("\n\n\n")
+        
+        for fn in fnames:
+            
+            writeline = r"\input{%s}"%(loc_relative+fn+".tex")
+            thefile.write_appline(writeline)
+        
+        thefile.write_appline("\n\n\n")
+        
+        # End file
+        thefile.write_appline( foot() )
     
-    thefile.write_appline("\n\n\n")
+    def _answers():
+        thefile = manipulate_files(loc+fname+"_antwoord.tex")
+        thefile.clearfile()
+        
+        
+        # Head
+        thefile.write_appline( preamble(landscape_or_portrait='landscape') )
+        
+        thefile.write_appline("\n\centering\n\n")
+        
+        for fn in fnames:
+            
+            writeline = r"\input{%s}"%(loc_relative+fn+"_antwoord.tex")
+            thefile.write_appline(writeline)
+            thefile.write_appline("\n")
+            # writeline = r"\clearpage"
+            # thefile.write_appline(writeline)
+            thefile.write_appline("\n")
+            
+        
+        thefile.write_appline("\n\n\n")
+        
+        # End file
+        thefile.write_appline( foot() )
+
     
-    # End file
-    thefile.write_appline( foot() )
+    _questions()
+    _answers()
+
+def obj_add_answer(obj,antw,antw_uitleg):
+    obj['antw'].append(antw)
+    obj['antw_uitleg'].append(antw_uitleg)
+    return obj
 
 def main():
     print('vamonos')
     def _locfname(lvl,cat):
         fname = "lvl%i_cat%s"%(lvl,cat)
-        loc = "lvl%i/%s/"%(lvl,fname)
+        # loc = "lvl%i/%s/"%(lvl,fname)
+        loc = "content/"
         return loc,fname
+    
+    def _make_entry(loc,fname):
+        out = {}
+        out['loc'] = loc
+        out['fname'] = fname
+        
+        return out
+    
+    data = {}
     
     fnames = []
     
     # Lvl 0
     lvl = 0
+    data[lvl] = {}
     
     cat = "keer"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl0_catkeer(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl0_catkeer(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
+    
     
     cat = "grondtal"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl0_catgrondtal(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl0_catgrondtal(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "macht"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl0_catmacht(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl0_catmacht(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "omvorm"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl0_catomvorm(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl0_catomvorm(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     # Lvl 1
     lvl = 1
+    data[lvl] = {}
     
     cat = "keer"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl1_catkeer(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl1_catkeer(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
-    cat = "keer"
+    cat = "macht"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl1_catmacht(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl1_catmacht(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     # Lvl 2
     lvl = 2
+    data[lvl] = {}
     
     cat = "omvorm"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl2_catomvorm(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl2_catomvorm(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "vermeerder"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl2_catvermeerder(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl2_catvermeerder(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     # Lvl 3
     lvl = 3
+    data[lvl] = {}
     
     cat = "bereken"
     loc,fname = _locfname(lvl,cat)
-    fname = gen_lvl3_catbereken(loc,fname,lvl,cat)
-    fnames.append(fname)
+    data[lvl][cat] = _make_entry(loc,fname)
+    fname_tex = gen_lvl3_catbereken(loc,fname,lvl,cat)
+    data[lvl][cat]['fname_tex'] = fname_tex
     
     # Combine all tex to 1 tex
-    fname_out = "out.tex"
-    loc_out =  "tex/"
+    fname_out = "combined_questions"
+    loc_out =  "combined/"
+    fnames = [ data[lvl][cat]['fname_tex'] for lvl in data  for cat in data[lvl]]
     combine_to_single_tex(loc_out,fname_out,fnames)
     
     # Watch out: all latex files have to be run by hand first before combine
