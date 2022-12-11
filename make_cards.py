@@ -2,11 +2,12 @@ from misc_func import *
 
 
 
-def preamble(landscape_or_portrait='landscape'):
+def preamble(margin="0.5cm",landscape_or_portrait='landscape',one_or_twocolumn="onecolumn"):
     
+    docclass = r"\documentclass[twocolumn]{article}" if one_or_twocolumn == "twocolumn" else r"\documentclass{article}"
     return r"""
-\documentclass{article}
-\usepackage[margin=0.5cm,centering,"""+landscape_or_portrait+r"""]{geometry}
+"""+docclass+r"""
+\usepackage[margin="""+margin+r""",centering,"""+landscape_or_portrait+r"""]{geometry}
 
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
@@ -195,7 +196,7 @@ def gen_lvl0_catomvorm(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def gen_lvl0_catmacht(loc,fname,lvl,cat):
     
@@ -233,7 +234,7 @@ def gen_lvl0_catmacht(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def gen_lvl1_catmacht(loc,fname,lvl,cat):
 
@@ -289,7 +290,7 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
     
@@ -326,7 +327,7 @@ def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def gen_lvl0_catkeer(loc,fname,lvl,cat):
     
@@ -363,7 +364,7 @@ def gen_lvl0_catkeer(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 
 def gen_lvl1_catkeer(loc,fname,lvl,cat):
@@ -420,7 +421,7 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def gen_lvl2_catomvorm(loc,fname,lvl,cat):
     
@@ -459,7 +460,7 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
     
 def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
@@ -495,7 +496,7 @@ def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
         
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def gen_lvl3_catbereken(loc,fname,lvl,cat):
     
@@ -532,7 +533,7 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
     
     obj_list_to_document(loc,fname,in_obj_list)
     
-    return loc+fname
+    return loc+fname,len(in_obj_list)
 
 def obj_list_to_document(loc,fname,in_obj_list):
     # print(in_obj_list)
@@ -556,6 +557,73 @@ def obj_list_to_document(loc,fname,in_obj_list):
     make_document(loc,fname,pages)
     
     make_document_answers(loc,fname,lvl,cat,answers)
+    
+    
+    
+    
+
+def make_scoresheet(loc,fname,data):
+    
+    width = 12
+    empties = width*r"&\phantom{XXX}"
+    
+    thefile = manipulate_files(loc+fname+".tex") 
+    thefile.clearfile()
+    
+    
+    # Head
+    thefile.write_appline( preamble(margin="3cm") )
+    
+    # tabel
+    
+    for twice in range(2): # Repeat
+        for twice in range(2): # Repeat
+            
+            toggle = 0
+            
+            thefile.write_appline("\n"+r"\Large"+"\n\n")
+            csstring = width*"|c"
+            writeline = r"""\rowcolors{1}{gray!25}{white}\begin{tabular}{ rr"""+csstring+r"""}\hline\hline
+    """
+            thefile.write_appline(writeline)
+            
+            for lvl in data:
+                # print("LEVEL",lvl)
+                
+                for i,cat in enumerate(data[lvl]):
+                    # print(data[lvl][cat])
+                    # input()
+                    # if toggle:
+                    #     entry = r"\rowcolor[gray]{.95}"
+                    # else:
+                    #     entry = ""
+                    entry = ""
+                    
+                    if i == 0:
+                        entry += "Level %s & "%(lvl+1)
+                    else:
+                        entry += "& "
+                    entry += cat + " "
+                    entry += empties 
+                    
+                    entry += r"\\"
+
+                    thefile.write_appline(entry)
+                    toggle = 1-toggle
+                
+                thefile.write_appline("\hline")
+            
+            writeline = r"""\hline\end{tabular}\par\ \newline
+        """
+            thefile.write_appline(writeline)
+            
+            thefile.write_appline("\n\n\n")
+            thefile.write_appline(r"\vfill")
+            
+        thefile.write_appline(r"\clearpage")
+            
+    # End file
+    thefile.write_appline( foot() )
     
 def combine_to_single_tex(loc,fname,fnames,loc_relative="../"):
     
@@ -586,7 +654,7 @@ def combine_to_single_tex(loc,fname,fnames,loc_relative="../"):
         
         
         # Head
-        thefile.write_appline( preamble(landscape_or_portrait='landscape') )
+        thefile.write_appline( preamble(landscape_or_portrait='landscape',one_or_twocolumn="twocolumn") )
         
         thefile.write_appline("\n\centering\n\n")
         
@@ -640,26 +708,30 @@ def main():
     cat = "keer"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl0_catkeer(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl0_catkeer(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     
     cat = "grondtal"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl0_catgrondtal(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl0_catgrondtal(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "macht"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl0_catmacht(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl0_catmacht(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "omvorm"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl0_catomvorm(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl0_catomvorm(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     # Lvl 1
@@ -669,13 +741,15 @@ def main():
     cat = "keer"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl1_catkeer(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl1_catkeer(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "macht"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl1_catmacht(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl1_catmacht(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     # Lvl 2
@@ -685,13 +759,15 @@ def main():
     cat = "omvorm"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl2_catomvorm(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl2_catomvorm(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     cat = "vermeerder"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl2_catvermeerder(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl2_catvermeerder(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     # Lvl 3
@@ -701,7 +777,8 @@ def main():
     cat = "bereken"
     loc,fname = _locfname(lvl,cat)
     data[lvl][cat] = _make_entry(loc,fname)
-    fname_tex = gen_lvl3_catbereken(loc,fname,lvl,cat)
+    fname_tex,n = gen_lvl3_catbereken(loc,fname,lvl,cat)
+    data[lvl][cat]['n'] = n
     data[lvl][cat]['fname_tex'] = fname_tex
     
     # Combine all tex to 1 tex
@@ -709,6 +786,10 @@ def main():
     loc_out =  "combined/"
     fnames = [ data[lvl][cat]['fname_tex'] for lvl in data  for cat in data[lvl]]
     combine_to_single_tex(loc_out,fname_out,fnames)
+    
+    loc_scoresheet = loc_out
+    fname_scoresheet = "scoresheet"
+    make_scoresheet(loc_scoresheet,fname_scoresheet,data)
     
     # Watch out: all latex files have to be run by hand first before combine
     # fnames = [f+'.pdf' for f in fnames]

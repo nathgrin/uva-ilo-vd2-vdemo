@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.12)  11 DEC 2022 20:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.12)  11 DEC 2022 22:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/combined_questions_antwoord.tex
-(c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/combined_questions_antwoord.tex
+**c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/scoresheet.tex
+(c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/scoresheet.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-10-26> (C:\Users\nathg\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -104,9 +104,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count199
 \l__pdf_internal_box=\box54
-)
-No file combined_questions_antwoord.aux.
-\openout1 = `combined_questions_antwoord.aux'.
+) (scoresheet.aux)
+\openout1 = `scoresheet.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
@@ -122,6 +121,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -132,15 +132,15 @@ LaTeX Font Info:    ... okay on input line 37.
 * hratio: 1:1
 * vratio: 1:1
 * modes: landscape 
-* h-part:(L,W,R)=(14.22636pt, 766.51726pt, 14.22636pt)
-* v-part:(T,H,B)=(14.22636pt, 585.84227pt, 14.22636pt)
+* h-part:(L,W,R)=(85.35826pt, 624.25346pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 443.57848pt, 85.35826pt)
 * \paperwidth=794.96999pt
 * \paperheight=614.295pt
-* \textwidth=766.51726pt
-* \textheight=585.84227pt
-* \oddsidemargin=-58.04362pt
-* \evensidemargin=-58.04362pt
-* \topmargin=-95.04362pt
+* \textwidth=624.25346pt
+* \textheight=443.57848pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -177,37 +177,67 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\nathg\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Runaway argument?
-{multicol \input {../content/lvl0_catkeer_antwoord.tex} 
-c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/combined_questions_antwoord.tex:45: Paragraph ended before \begin  was complete.
-<to be read again> 
-                   \par 
-l.45 
-     
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-(../content/lvl0_catgrondtal_antwoord.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 1.
+(Font)              <14.4> on input line 44.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-) (../content/lvl0_catmacht_antwoord.tex) (../content/lvl0_catomvorm_antwoord.tex) (../content/lvl1_catkeer_antwoord.tex [1
+(Font)              <7> on input line 44.
 
-{C:/Users/nathg/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]) (../content/lvl1_catmacht_antwoord.tex) (../content/lvl2_catomvorm_antwoord.tex) (../content/lvl2_catvermeerder_antwoord.tex) (../content/lvl3_catbereken_antwoord.tex) [2] (combined_questions_antwoord.aux) ) 
+Overfull \hbox (41.27147pt too wide) in paragraph at lines 44--59
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Overfull \hbox (41.27147pt too wide) in paragraph at lines 70--85
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+
+ []
+
+[1
+
+{C:/Users/nathg/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+Overfull \hbox (41.27147pt too wide) in paragraph at lines 97--112
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
+ []
+
+
+Overfull \hbox (41.27147pt too wide) in paragraph at lines 123--138
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
+
+ []
+
+[2
+
+] (scoresheet.aux) ) 
 Here is how much of TeX's memory you used:
- 2860 strings out of 475380
- 47722 string characters out of 2776771
- 428070 words of memory out of 3000000
- 24232 multiletter control sequences out of 15000+600000
- 469567 words of font info for 29 fonts, out of 8000000 for 9000
+ 2824 strings out of 475380
+ 45740 string characters out of 2776771
+ 448015 words of memory out of 3000000
+ 24219 multiletter control sequences out of 15000+600000
+ 470172 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,289b,144s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-Output written on combined_questions_antwoord.pdf (2 pages, 34087 bytes).
+ 55i,8n,62p,282b,117s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on scoresheet.pdf (2 pages, 18483 bytes).
 PDF statistics:
- 19 PDF objects out of 1000 (max. 8388607)
+ 14 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
