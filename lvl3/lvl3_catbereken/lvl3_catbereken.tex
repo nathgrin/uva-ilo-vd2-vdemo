@@ -1,50 +1,15 @@
-
-\documentclass{article}
-\usepackage[margin=2cm,centering,landscape]{geometry}
-
-\usepackage{graphicx}
-
-
-\usepackage{enumitem}
-\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
-%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
-
-
-\NewDocumentCommand{\lognl}{o}{%
-  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
-
-\newcommand\Block[5]{%
-\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
-\fbox{% delete
-\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
-\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
-\vspace{1.5cm}
-\centering
-#3\par #4\par
-\vfill
-\hfill#5\phantom{\hspace{1cm}}
-\vspace{\baselineskip}
-\end{minipage}%
-  }% delete
-}
-
-\begin{document}
-
-    
 \thispagestyle{empty}% optional: suppress page numbering
     \noindent
-\Block{4}{vermeerder}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{0}\hfill%
-\Block{4}{vermeerder}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{1}\hfill%
-\Block{4}{vermeerder}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{2}\hfill%
+\Block{4}{bereken}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{0}\hfill%
+\Block{4}{bereken}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{1}\hfill%
+\Block{4}{bereken}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{2}\hfill%
 
         \vfill
         \noindent
-        \Block{4}{vermeerder}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{3}\hfill%
-\Block{4}{vermeerder}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{4}\hfill%
-\Block{4}{vermeerder}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{5}\hfill%
+        \Block{4}{bereken}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{3}\hfill%
+\Block{4}{bereken}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{4}\hfill%
+\Block{4}{bereken}{Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $}{\begin{enumerate}\item ?\item ?\item ?\item ?\end{enumerate}}{5}\hfill%
 
 
 \clearpage
 
-
-\end{document}

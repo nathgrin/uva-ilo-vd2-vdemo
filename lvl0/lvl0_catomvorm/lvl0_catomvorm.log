@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.12)  11 DEC 2022 11:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2022.11.12)  10 DEC 2022 22:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/tex/out.tex
-(c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/tex/out.tex
+**c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/lvl0/lvl0_catomvorm/lvl0_catomvorm.tex
+(c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/lvl0/lvl0_catomvorm/lvl0_catomvorm.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-10-26> (C:\Users\nathg\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -73,8 +73,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count198
 \l__pdf_internal_box=\box52
-) (out.aux)
-\openout1 = `out.aux'.
+) (lvl0_catomvorm.aux)
+\openout1 = `lvl0_catomvorm.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
@@ -145,48 +145,26 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\nathg\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-)) (../lvl0/lvl0_catkeer/lvl0_catkeer.tex
+))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
+(Font)              <7> on input line 36.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
+(Font)              <5> on input line 36.
  [1
 
-{C:/Users/nathg/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2
-
-]) (../lvl0/lvl0_catgrondtal/lvl0_catgrondtal.tex [3
-
-] [4
-
-]) (../lvl0/lvl0_catmacht/lvl0_catmacht.tex [5
-
-] [6
-
-]) (../lvl0/lvl0_catomvorm/lvl0_catomvorm.tex [7
-
-]) (../lvl1/lvl1_catkeer/lvl1_catkeer.tex [8
-
-]) (../lvl1/lvl1_catkeer/lvl1_catkeer.tex [9
-
-]) (../lvl2/lvl2_catomvorm/lvl2_catomvorm.tex [10
-
-]) (../lvl2/lvl2_catvermeerder/lvl2_catvermeerder.tex [11
-
-]) (../lvl3/lvl3_catbereken/lvl3_catbereken.tex [12
-
-]) (out.aux) ) 
+{C:/Users/nathg/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (lvl0_catomvorm.aux) ) 
 Here is how much of TeX's memory you used:
- 2248 strings out of 475380
- 40043 string characters out of 2776771
- 405376 words of memory out of 3000000
- 23619 multiletter control sequences out of 15000+600000
+ 2182 strings out of 475380
+ 37108 string characters out of 2776771
+ 396398 words of memory out of 3000000
+ 23595 multiletter control sequences out of 15000+600000
  469567 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,62p,424b,306s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on out.pdf (12 pages, 124203 bytes).
+ 55i,7n,62p,284b,300s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+Output written on lvl0_catomvorm.pdf (1 page, 53493 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
+ 31 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

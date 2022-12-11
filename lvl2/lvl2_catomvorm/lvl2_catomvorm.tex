@@ -1,50 +1,15 @@
-
-\documentclass{article}
-\usepackage[margin=2cm,centering,landscape]{geometry}
-
-\usepackage{graphicx}
-
-
-\usepackage{enumitem}
-\setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
-%\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
-
-
-\NewDocumentCommand{\lognl}{o}{%
-  \IfNoValueTF{#1}{}{{}^{\scalebox{0.5}{#1}}\!}\log}%
-
-\newcommand\Block[5]{%
-\setlength\fboxsep{0pt}\setlength\fboxrule{0.1pt}% delete
-\fbox{% delete
-\begin{minipage}[c][\dimexpr.5\textheight-2pt\relax][t]{\dimexpr0.3333333\textwidth-3pt\relax}
-\vspace{\baselineskip}\hspace{1cm}#1\hfill#2\phantom{\hspace{1cm}}\par
-\vspace{1.5cm}
-\centering
-#3\par #4\par
-\vfill
-\hfill#5\phantom{\hspace{1cm}}
-\vspace{\baselineskip}
-\end{minipage}%
-  }% delete
-}
-
-\begin{document}
-
-    
 \thispagestyle{empty}% optional: suppress page numbering
     \noindent
-\Block{3}{omvorm}{Herleid $y=10+\lognl[2] (11\cdot x+10)$}{\begin{enumerate}\item $x=\frac{10}{11}2^{y-10}$\item $x=\frac{2^{y-10}-10}{11}$\item $x=\lognl[2](11 y - 10)-10$\item $x=\frac{2^{11 y-10}}{10}$\end{enumerate}}{0}\hfill%
-\Block{3}{omvorm}{Herleid $y=12+\lognl[2] (9\cdot x+13)$}{\begin{enumerate}\item $x=\frac{2^{9 y-13}}{12}$\item $x=\lognl[2](9 y - 12)-13$\item $x=\frac{2^{y-12}-13}{9}$\item $x=\frac{13}{9}2^{y-12}$\end{enumerate}}{1}\hfill%
-\Block{3}{omvorm}{Herleid $y=6+\lognl[2] (10\cdot x+6)$}{\begin{enumerate}\item $x=\frac{2^{10 y-6}}{6}$\item $x=\frac{6}{10}2^{y-6}$\item $x=\lognl[2](10 y - 6)-6$\item $x=\frac{2^{y-6}-6}{10}$\end{enumerate}}{2}\hfill%
+\Block{3}{omvorm}{Herleid $y=0+\lognl[2] (7\cdot x+0)$}{\begin{enumerate}\item $x=\frac{2^{7 y-0}}{0}$\item $x=\frac{2^{y-0}-0}{7}$\item $x=\lognl[2](7 y - 0)-0$\item $x=\frac{0}{7}2^{y-0}$\end{enumerate}}{0}\hfill%
+\Block{3}{omvorm}{Herleid $y=5+\lognl[2] (4\cdot x+9)$}{\begin{enumerate}\item $x=\frac{2^{4 y-9}}{5}$\item $x=\frac{9}{4}2^{y-5}$\item $x=\frac{2^{y-5}-9}{4}$\item $x=\lognl[2](4 y - 5)-9$\end{enumerate}}{1}\hfill%
+\Block{3}{omvorm}{Herleid $y=0+\lognl[2] (8\cdot x+1)$}{\begin{enumerate}\item $x=\frac{2^{8 y-1}}{0}$\item $x=\frac{2^{y-0}-1}{8}$\item $x=\frac{1}{8}2^{y-0}$\item $x=\lognl[2](8 y - 0)-1$\end{enumerate}}{2}\hfill%
 
         \vfill
         \noindent
-        \Block{3}{omvorm}{Herleid $y=0+\lognl[4] (8\cdot x+9)$}{\begin{enumerate}\item $x=\frac{4^{8 y-9}}{0}$\item $x=\lognl[4](8 y - 0)-9$\item $x=\frac{9}{8}4^{y-0}$\item $x=\frac{4^{y-0}-9}{8}$\end{enumerate}}{3}\hfill%
-\Block{3}{omvorm}{Herleid $y=0+\lognl[3] (1\cdot x+0)$}{\begin{enumerate}\item $x=\lognl[3](1 y - 0)-0$\item $x=\frac{3^{y-0}-0}{1}$\item $x=\frac{0}{1}3^{y-0}$\item $x=\frac{3^{1 y-0}}{0}$\end{enumerate}}{4}\hfill%
-\Block{3}{omvorm}{Herleid $y=11+\lognl[3] (1\cdot x+10)$}{\begin{enumerate}\item $x=\frac{10}{1}3^{y-11}$\item $x=\frac{3^{y-11}-10}{1}$\item $x=\lognl[3](1 y - 11)-10$\item $x=\frac{3^{1 y-10}}{11}$\end{enumerate}}{5}\hfill%
+        \Block{3}{omvorm}{Herleid $y=0+\lognl[3] (7\cdot x+3)$}{\begin{enumerate}\item $x=\frac{3^{7 y-3}}{0}$\item $x=\frac{3^{y-0}-3}{7}$\item $x=\frac{3}{7}3^{y-0}$\item $x=\lognl[3](7 y - 0)-3$\end{enumerate}}{3}\hfill%
+\Block{3}{omvorm}{Herleid $y=0+\lognl[3] (10\cdot x+6)$}{\begin{enumerate}\item $x=\frac{3^{10 y-6}}{0}$\item $x=\frac{3^{y-0}-6}{10}$\item $x=\lognl[3](10 y - 0)-6$\item $x=\frac{6}{10}3^{y-0}$\end{enumerate}}{4}\hfill%
+\Block{3}{omvorm}{Herleid $y=7+\lognl[2] (4\cdot x+0)$}{\begin{enumerate}\item $x=\lognl[2](4 y - 7)-0$\item $x=\frac{0}{4}2^{y-7}$\item $x=\frac{2^{y-7}-0}{4}$\item $x=\frac{2^{4 y-0}}{7}$\end{enumerate}}{5}\hfill%
 
 
 \clearpage
 
-
-\end{document}

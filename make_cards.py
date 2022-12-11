@@ -5,7 +5,7 @@ from misc_func import *
 def preamble():
     return r"""
 \documentclass{article}
-\usepackage[margin=2cm,centering,landscape]{geometry}
+\usepackage[margin=0.5cm,centering,landscape]{geometry}
 
 \usepackage{graphicx}
 
@@ -64,7 +64,7 @@ def make_document(loc,fname,pages):
     
     
     # Head
-    thefile.write_appline( preamble() )
+    # thefile.write_appline( preamble() )
     
     groups = [pages[i:i+6] for i in range(0, len(pages), 6)]
     
@@ -90,7 +90,7 @@ def make_document(loc,fname,pages):
             thefile.write_appline("\n\clearpage\n")
     
     # End file
-    thefile.write_appline( foot() )
+    # thefile.write_appline( foot() )
 
 
 def make_page(obj,index,order):
@@ -118,8 +118,8 @@ def make_page(obj,index,order):
 def gen_lvl0_catomvorm(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -155,8 +155,8 @@ def gen_lvl0_catomvorm(loc,fname,lvl,cat):
 def gen_lvl0_catmacht(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -208,8 +208,8 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
     
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2^3)$"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -247,8 +247,8 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
 def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Schrijf $\lognl[2] (3)$ als logaritme met grondtal 10"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -284,8 +284,8 @@ def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
 def gen_lvl0_catkeer(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -323,8 +323,8 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
     
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -379,8 +379,8 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
 def gen_lvl2_catomvorm(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -418,8 +418,8 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
 def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -455,8 +455,8 @@ def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
 def gen_lvl3_catbereken(loc,fname,lvl,cat):
     
     def _template():
-        lvl = lvl
-        cat = cat
+        # lvl = lvl
+        # cat = cat
         vraag = r"""Gegeven is dat $\lognl[10] = 8$ Bereken $\lognl[2] (2\cdot 3) $"""
         antw = ["3","2","4","128"]
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw}
@@ -501,6 +501,28 @@ def obj_list_to_document(loc,fname,in_obj_list):
     
     make_document(loc,fname,pages)
     
+def combine_to_single_tex(loc,fname,fnames,loc_relative="../"):
+    
+    
+    
+    thefile = manipulate_files(loc+fname) # is .tex
+    thefile.clearfile()
+    
+    
+    # Head
+    thefile.write_appline( preamble() )
+    
+    thefile.write_appline("\n\n\n")
+    
+    for fn in fnames:
+        
+        writeline = r"\input{%s}"%(loc_relative+fn+".tex")
+        thefile.write_appline(writeline)
+    
+    thefile.write_appline("\n\n\n")
+    
+    # End file
+    thefile.write_appline( foot() )
 
 def main():
     print('vamonos')
@@ -529,7 +551,7 @@ def main():
     fname = gen_lvl0_catmacht(loc,fname,lvl,cat)
     fnames.append(fname)
     
-    cat = "omvormen"
+    cat = "omvorm"
     loc,fname = _locfname(lvl,cat)
     fname = gen_lvl0_catomvorm(loc,fname,lvl,cat)
     fnames.append(fname)
@@ -568,10 +590,15 @@ def main():
     fname = gen_lvl3_catbereken(loc,fname,lvl,cat)
     fnames.append(fname)
     
+    # Combine all tex to 1 tex
+    fname_out = "out.tex"
+    loc_out =  "tex/"
+    combine_to_single_tex(loc_out,fname_out,fnames)
+    
     # Watch out: all latex files have to be run by hand first before combine
-    fnames = [f+'.pdf' for f in fnames]
-    print(fnames)
-    merge_pdfs(fnames,"all_combined.pdf")
+    # fnames = [f+'.pdf' for f in fnames]
+    # print(fnames)
+    # merge_pdfs(fnames,"all_combined.pdf")
 
 if __name__ == "__main__":
     main()
