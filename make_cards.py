@@ -278,10 +278,10 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Bereken $\lognl[%i] (%s\cdot%s)$"""%(grondtal,xstr,ystr)
         
-        obj = obj_add_answer( obj,r"$%f$"%(x+y) , "Correct" )
-        obj = obj_add_answer( obj,r"$%f$"%(x*y), "logxlog" )
-        obj = obj_add_answer( obj,r"$%f$"%(grondtal*(x+y)), "definitie" )
-        obj = obj_add_answer( obj,r"$%f$"%(grondtal**(x+y)), "definitie" )
+        obj = obj_add_answer( obj,r"$%g$"%(x+y) , "Correct" )
+        obj = obj_add_answer( obj,r"$%g$"%(x*y), "logxlog" )
+        obj = obj_add_answer( obj,r"$%g$"%(grondtal*(x+y)), "definitie" )
+        obj = obj_add_answer( obj,r"$%g$"%(grondtal**(x+y)), "definitie" )
         
         obj['antw_uitleg'] = ["Correct","logxlog","definitie","definitie"]
     
@@ -391,9 +391,9 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Herleid $\lognl[%i] (%i\cdot x)$"""%(b,second)
         
-        obj = obj_add_answer( obj,r"$%f+\lognl[%i](x)$"%(logb(b,second),b) , "Correct" )
-        obj = obj_add_answer( obj,r"$%f+\lognl[%i](x)$"%(b*second,b) , "definitie" )
-        obj = obj_add_answer( obj,r"$%f\lognl[%i](x)$"%(logb(b,second),b) , "logxlog" )
+        obj = obj_add_answer( obj,r"$%g+\lognl[%i](x)$"%(logb(b,second),b) , "Correct" )
+        obj = obj_add_answer( obj,r"$%g+\lognl[%i](x)$"%(b*second,b) , "definitie" )
+        obj = obj_add_answer( obj,r"$%g\lognl[%i](x)$"%(logb(b,second),b) , "logxlog" )
         
     
         in_obj_list.append(obj)
@@ -486,10 +486,10 @@ def gen_lvl2_catvermeerder(loc,fname,lvl,cat):
         
         obj['vraag'] = r"""Bereken met hoeveel $y=\lognl[%i](%i x)$ toeneemt als $x$ met %i wordt vermenigvuldigd"""%(b,a,c)
         
-        obj = obj_add_answer( obj,r"plus $%f$"%(logb(b,c)) , "Correct" )
-        obj = obj_add_answer( obj,r"keer $%f$"%(logb(b,c)), "definitie" )
-        obj = obj_add_answer( obj,r"plus $%f$"%(logb(b,a)), "definitie" )
-        obj = obj_add_answer( obj,r"keer $%f$"%(logb(b,a)), "definitie" )
+        obj = obj_add_answer( obj,r"plus $%g$"%(logb(b,c)) , "Correct" )
+        obj = obj_add_answer( obj,r"keer $%g$"%(logb(b,c)), "definitie" )
+        obj = obj_add_answer( obj,r"plus $%g$"%(logb(b,a)), "definitie" )
+        obj = obj_add_answer( obj,r"keer $%g$"%(logb(b,a)), "definitie" )
         
     
         in_obj_list.append(obj)
