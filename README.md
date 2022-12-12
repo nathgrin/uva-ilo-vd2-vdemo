@@ -11,8 +11,10 @@ vakdidaktiek 2 vdemo kaartjes maken
  - delen? keer, min?
 
  - handmatige invoer fixen
- - antwoordenmodel
  - als fout, ga door naar ...
+
+ - instructies gamemaster
+ - spelregels
 
  - pretty float formatting
  - sqrt() en fraction formatting

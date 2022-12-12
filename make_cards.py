@@ -12,6 +12,8 @@ def preamble(margin="0.5cm",landscape_or_portrait='landscape',one_or_twocolumn="
 \usepackage{graphicx}
 \usepackage[table]{xcolor}
 
+\usepackage{xparse}
+
 \usepackage{enumitem}
 \setenumerate[0]{label=\textbf{\alph*)},leftmargin=2cm,rightmargin=2cm}
 %\renewcommand{\theenumi}{\textbf{\alph{enumi})}}
@@ -172,23 +174,27 @@ def gen_lvl0_catomvorm(loc,fname,lvl,cat):
         obj = {'lvl':lvl,'cat':cat,'vraag':vraag,'antw':antw,'antw_uitleg':antw_uitleg}
         return obj
 
+    
+    letters = ['x','t','q','p']
+    
     in_obj_list = []
     for i in range(6):
         obj = _template()
         grondtal = np.random.randint(2,7)
         coinflip = np.random.randint(2)
-        
+        let = np.random.randint(len(letters)) if coinflip else 0
+        let = letters[let]
         # macht = 10 if coinflip else np.random.randint(2,4)
         macht = np.random.randint(2,5)
         # while x == grondtarget:
         #     x = np.random.randint(2,4)
         # print(n,coinflip,grondtarget,x)
-        obj['vraag'] = r"""Bereken $x$ als $%i^{x}=%i$"""%(grondtal,grondtal**macht)
+        obj['vraag'] = r"""Bereken $%s$ als $%i^{%s}=%i$"""%(let,grondtal,let,grondtal**macht)
         
-        obj = obj_add_answer( obj,r"$x=\lognl[%i]$"%(macht) , "Correct")
-        obj = obj_add_answer( obj,r"$%i$"%(grondtal*macht) , "definitie")
-        obj = obj_add_answer( obj,r"$%i$"%(grondtal**macht) , "definitie")
-        obj = obj_add_answer( obj,r"$\frac{%i}{%i}$"%(grondtal,macht) , "definitie")
+        obj = obj_add_answer( obj,r"$%s=\lognl[%i](%i)=%i$"%(let,grondtal,grondtal**macht,macht) , "Correct")
+        obj = obj_add_answer( obj,r"$%s=\lognl[%i](%i)=%i$"%(let,grondtal**macht,grondtal,macht) , "omgedraaid")
+        obj = obj_add_answer( obj,r"$%s=\lognl[%i](%i)=%i$"%(let,grondtal,grondtal**(macht-1),macht) , "gedeeld")
+        obj = obj_add_answer( obj,r"$%s=\lognl[%i](%i)=%i$"%(let,grondtal**(macht-1),grondtal,macht) , "beidefout")
         
     
         in_obj_list.append(obj)
@@ -224,9 +230,9 @@ def gen_lvl0_catmacht(loc,fname,lvl,cat):
         obj['vraag'] = r"""Bereken $\lognl[%i] (%i^{%i})$"""%(grondtal,grondtal,macht)
         
         obj = obj_add_answer( obj,r"$%i$"%(macht) , "Correct")
-        obj = obj_add_answer( obj,r"$%i$"%(grondtal*macht) , "definitie")
-        obj = obj_add_answer( obj,r"$%i$"%(grondtal**macht) , "definitie")
-        obj = obj_add_answer( obj,r"$\frac{%i}{%i}$"%(grondtal,macht) , "definitie")
+        obj = obj_add_answer( obj,r"$%i$"%(grondtal*macht) , "gxmacht")
+        obj = obj_add_answer( obj,r"$%i$"%(grondtal**macht) , "gmachtmacht")
+        obj = obj_add_answer( obj,r"$\frac{%i}{%i}$"%(grondtal,macht) , "gdeelmacht")
         
     
         in_obj_list.append(obj)
@@ -270,9 +276,11 @@ def gen_lvl1_catmacht(loc,fname,lvl,cat):
         coinflip = np.random.randint(2)
         
             
-        first,firstn = np.random.randint(3),np.random.randint(1,5)
+        first = np.random.randint(3)
+        firstn = np.random.randint(1,5) if first == 1 else np.random.randint(2,5)
         xstr,x = _typeset(str(grondtal),first,firstn)
-        second,secondn = np.random.randint(3),np.random.randint(1,5)
+        second = np.random.randint(3)
+        secondn = np.random.randint(1,5) if second == 1 else np.random.randint(2,5)
         ystr,y = _typeset(str(grondtal),second,secondn)
        
         
@@ -317,9 +325,9 @@ def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
         obj['vraag'] = r"""Schrijf $\lognl[%i] (%i)$ als logaritme met grondtal %i"""%(n,x,grondtarget)
         
         obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,grondtarget,n)  , "Correct" )
-        obj = obj_add_answer( obj,r"$\lognl[%i](%i)$"%(grondtarget,x) , "swappen" )
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,n,x) , "swappen" )
         obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,x,grondtarget) , "swappen" )
-        obj = obj_add_answer( obj,r"$\frac{1}{%i}\lognl[%i](%i)$"%(n,grondtarget,x) , "swappen" )
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{%i}$"%(grondtarget,x,n) , "swappen" )
         
     
         in_obj_list.append(obj)
@@ -387,13 +395,14 @@ def gen_lvl1_catkeer(loc,fname,lvl,cat):
         
         # first = 1 if coinflip else np.random.randint(2,4)
         
-        second = b**(np.random.randint(1,4)) if coinflip else np.random.randint(2,28)
+        second = b**(np.random.randint(1,5)) #if coinflip else np.random.randint(2,28)
         
         obj['vraag'] = r"""Herleid $\lognl[%i] (%i\cdot x)$"""%(b,second)
         
         obj = obj_add_answer( obj,r"$%g+\lognl[%i](x)$"%(logb(b,second),b) , "Correct" )
-        obj = obj_add_answer( obj,r"$%g+\lognl[%i](x)$"%(b*second,b) , "definitie" )
-        obj = obj_add_answer( obj,r"$%g\lognl[%i](x)$"%(logb(b,second),b) , "logxlog" )
+        obj = obj_add_answer( obj,r"$%g+\lognl[%i](x)$"%(b*second,b) , "macht" )
+        obj = obj_add_answer( obj,r"$%g+\lognl[%i](x)$"%(second/b,b) , "macht" )
+        obj = obj_add_answer( obj,r"$%g\cdot\lognl[%i](x)$"%(logb(b,second),b) , "keer" )
         
     
         in_obj_list.append(obj)
@@ -446,7 +455,7 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
         d = 0 if coinflip else np.random.randint(15)
         
         
-        obj['vraag'] = r"""Herleid $y=%i+\lognl[%i] (%i\cdot x+%i)$"""%(a,b,c,d)
+        obj['vraag'] = r"""Druk $x$ uit in $y$ bij $y=%i+\lognl[%i] (%i\cdot x+%i)$"""%(a,b,c,d)
         
         obj = obj_add_answer( obj,r"$x=\frac{%i^{y-%i}-%i}{%i}$"%(b,a,d,c) , "Correct" )
         obj = obj_add_answer( obj,r"$x=\frac{%i}{%i}%i^{y-%i}$"%(d,c,b,a) , "definitie" )
