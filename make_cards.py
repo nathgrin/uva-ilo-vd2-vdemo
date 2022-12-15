@@ -454,15 +454,15 @@ def gen_lvl0_catgrondtal(loc,fname,lvl,cat):
         
         grondtarget = 10 if coinflip else np.random.randint(2,4)
         x = np.random.randint(2,32)
-        while x == grondtarget:
-            x = np.random.randint(2,4)
+        while n == grondtarget:
+            n = np.random.randint(2,15)
         print(n,coinflip,grondtarget,x)
         obj['vraag'] = r"""Schrijf $\lognl[%i] (%i)$ als logaritme met grondtal %i"""%(n,x,grondtarget)
         
         obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,grondtarget,n)  , "Correct" )
-        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,n,x) , "swappen" )
-        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,x,grondtarget) , "swappen" )
-        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{%i}$"%(grondtarget,x,n) , "swappen" )
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,n,x) , "regel" )
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{\lognl[%i](%i)}$"%(grondtarget,x,x,grondtarget) , "regel" )
+        obj = obj_add_answer( obj,r"$\frac{\lognl[%i](%i)}{%i}$"%(grondtarget,x,n) , "regel" )
         
     
         in_obj_list.append(obj)
@@ -650,7 +650,7 @@ def gen_lvl2_catomvorm(loc,fname,lvl,cat):
         coinflip = np.random.randint(2)
         
         a = 0 if coinflip else np.random.randint(15)
-        c = np.random.randint(15)
+        c = np.random.randint(1,15)
         coinflip = np.random.randint(2)
         d = 0 if coinflip else np.random.randint(15)
         
@@ -734,7 +734,7 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
     obj = _template()
     grondtal = np.random.randint(2,11)
     
-    obj['vraag'] = r"""Gegeven is dat $\lognl[](a) = 6$. Bereken $\lognl[] (\sqrt{a \sqrt{a}}) $"""
+    obj['vraag'] = r"""Gegeven is dat $\lognl[](a) = 6$. Bereken $\lognl[] (a \sqrt{a}) $"""
     
     obj = obj_add_answer( obj,r"9" , "Correct" )
     obj = obj_add_answer( obj,r"18" , "machten" )
@@ -745,12 +745,12 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
     obj = _template()
     grondtal = np.random.randint(2,11)
     
-    obj['vraag'] = r"""Gegeven is dat $\lognl[](a) = 6$. Bereken $\lognl[] (\sqrt{100a \sqrt{a}}) $"""
+    obj['vraag'] = r"""Gegeven is dat $\lognl[](a) = 6$. Bereken $\lognl[] (\sqrt{100a} \sqrt{a}) $"""
     
-    obj = obj_add_answer( obj,r"11" , "Correct" )
+    obj = obj_add_answer( obj,r"7" , "Correct" )
     obj = obj_add_answer( obj,r"18" , "keer" )
     obj = obj_add_answer( obj,r"9" , "keer" )
-    obj = obj_add_answer( obj,r"7" , "machten" )
+    obj = obj_add_answer( obj,r"11" , "machten" )
     in_obj_list.append(obj)
     ####
     obj = _template()
@@ -758,10 +758,10 @@ def gen_lvl3_catbereken(loc,fname,lvl,cat):
     
     obj['vraag'] = r"""Gegeven is dat $\lognl[](a) = 6$. Bereken $\lognl[] (0.001a^2) $"""
     
-    obj = obj_add_answer( obj,r"3" , "Correct" )
+    obj = obj_add_answer( obj,r"9" , "Correct" )
     obj = obj_add_answer( obj,r"-18" , "keer" )
     obj = obj_add_answer( obj,r"18" , "keer" )
-    obj = obj_add_answer( obj,r"6" , "machten" )
+    obj = obj_add_answer( obj,r"3" , "machten" )
     in_obj_list.append(obj)
     ####
     obj = _template()
