@@ -3,8 +3,8 @@ entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/scoresheet.tex
-(c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/scoresheet.tex
+**c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/combined_questions.tex
+(c:/Users/nathg/Documents/GitHub/uva-ilo-vd2-vdemo/combined/combined_questions.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-10-26> (C:\Users\nathg\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -108,8 +108,9 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@inbox=\box54
 \enit@count@id=\count198
 \enitdp@description=\count199
-) (scoresheet.aux)
-\openout1 = `scoresheet.aux'.
+)
+No file combined_questions.aux.
+\openout1 = `combined_questions.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
@@ -125,7 +126,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
 LaTeX Font Info:    ... okay on input line 39.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -136,15 +136,15 @@ LaTeX Font Info:    ... okay on input line 39.
 * hratio: 1:1
 * vratio: 1:1
 * modes: landscape 
-* h-part:(L,W,R)=(71.13188pt, 652.70622pt, 71.13188pt)
-* v-part:(T,H,B)=(71.13188pt, 472.03123pt, 71.13188pt)
+* h-part:(L,W,R)=(14.22636pt, 766.51726pt, 14.22636pt)
+* v-part:(T,H,B)=(14.22636pt, 585.84227pt, 14.22636pt)
 * \paperwidth=794.96999pt
 * \paperheight=614.295pt
-* \textwidth=652.70622pt
-* \textheight=472.03123pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
-* \topmargin=-38.1381pt
+* \textwidth=766.51726pt
+* \textheight=585.84227pt
+* \oddsidemargin=-58.04362pt
+* \evensidemargin=-58.04362pt
+* \topmargin=-95.04362pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -180,68 +180,80 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (C:\Users\nathg\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
+)) (../content/lvl0_catkeer.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 46.
+(Font)              <7> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 46.
+(Font)              <5> on input line 1.
+ [1
 
-Overfull \hbox (12.81871pt too wide) in paragraph at lines 46--64
-[][] 
- []
+{C:/Users/nathg/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2
 
+] [3
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
+] [4
 
- []
+]) (../content/lvl0_catgrondtal.tex [5
 
+] [6
 
-Overfull \hbox (12.81871pt too wide) in paragraph at lines 75--93
-[][] 
- []
+]) (../content/lvl0_catmacht.tex [7
 
+] [8
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+]) (../content/lvl0_catomvorm.tex [9
 
- []
+] [10
 
-[1
+]) (../content/lvl1_catkeer.tex [11
 
-{C:/Users/nathg/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-Overfull \hbox (12.81871pt too wide) in paragraph at lines 105--123
-[][] 
- []
+] [12
 
+] [13
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+] [14
 
- []
+]) (../content/lvl1_catmacht.tex [15
 
+] [16
 
-Overfull \hbox (12.81871pt too wide) in paragraph at lines 134--152
-[][] 
- []
+]) (../content/lvl1_catherleid.tex [17
 
+] [18
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+]) (../content/lvl1_cattotmacht.tex [19
 
- []
+] [20
 
-[3
+]) (../content/lvl2_catomvorm.tex [21
 
-] [4] (scoresheet.aux) ) 
+] [22
+
+]) (../content/lvl2_catvermeerder.tex [23
+
+] [24
+
+]) (../content/lvl2_catherleid.tex [25
+
+] [26
+
+]) (../content/lvl3_catbereken.tex [27
+
+] [28
+
+]) (combined_questions.aux) ) 
 Here is how much of TeX's memory you used:
- 2902 strings out of 475380
- 47967 string characters out of 2776771
- 465574 words of memory out of 3000000
- 24291 multiletter control sequences out of 15000+600000
- 470172 words of font info for 31 fonts, out of 8000000 for 9000
+ 2961 strings out of 475380
+ 50319 string characters out of 2776771
+ 423614 words of memory out of 3000000
+ 24315 multiletter control sequences out of 15000+600000
+ 469567 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,63p,281b,117s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on scoresheet.pdf (4 pages, 20640 bytes).
+ 57i,8n,63p,452b,306s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/nathg/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on combined_questions.pdf (28 pages, 169157 bytes).
 PDF statistics:
- 20 PDF objects out of 1000 (max. 8388607)
+ 147 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
